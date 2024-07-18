@@ -9,4 +9,4 @@ cover-*.out
 /bbolt
 /cmd/bbolt/bbolt
 .DS_Store
-
+/bbolt-benchmark

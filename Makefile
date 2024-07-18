@@ -64,7 +64,7 @@ coverage:
 BOLT_CMD=bbolt
 
 build:
-	go build -o bin/${BOLT_CMD} ./cmd/${BOLT_CMD}
+	go build -o bin/${BOLT_CMD} -gcflags="all=-N"  ./cmd/${BOLT_CMD}
 
 .PHONY: clean
 clean: # Clean binaries

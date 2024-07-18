@@ -1382,3 +1382,9 @@ type Info struct {
 	Data     uintptr
 	PageSize int
 }
+
+// String returns a string representation of Stats.
+func (s Stats) String() string {
+	return fmt.Sprintf("TxStats: %+v\nFreePageN: %d\nPendingPageN: %d\nFreeAlloc: %d\nFreelistInuse: %d\nTxN: %d\nOpenTxN: %d",
+		s.TxStats, s.FreePageN, s.PendingPageN, s.FreeAlloc, s.FreelistInuse, s.TxN, s.OpenTxN)
+}

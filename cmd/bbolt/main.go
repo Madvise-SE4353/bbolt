@@ -1056,9 +1056,16 @@ func (cmd *benchCommand) Run(args ...string) error {
 		benchWriteName := "BenchmarkWrite"
 		benchReadName := "BenchmarkRead"
 		maxLen := max(len(benchReadName), len(benchWriteName))
+		// make a string
+		stats := db.Stats().TxStats.PageCount
+		fmt.Fprintf(cmd.Stdout, "PageCount: %d\n", stats)
 		printGoBenchResult(cmd.Stdout, writeResults, maxLen, benchWriteName)
 		printGoBenchResult(cmd.Stdout, readResults, maxLen, benchReadName)
+
+		// printGoBenchResult(cmd.Stdout, stats, maxLen, "FileSize")
 	} else {
+		stats := db.Stats().TxStats.PageCount
+		fmt.Fprintf(cmd.Stdout, "PageCount: %s\n", stats)
 		fmt.Fprintf(cmd.Stdout, "# Write\t%v(ops)\t%v\t(%v/op)\t(%v op/sec)\n", writeResults.CompletedOps(), writeResults.Duration(), writeResults.OpDuration(), writeResults.OpsPerSecond())
 		fmt.Fprintf(cmd.Stdout, "# Read\t%v(ops)\t%v\t(%v/op)\t(%v op/sec)\n", readResults.CompletedOps(), readResults.Duration(), readResults.OpDuration(), readResults.OpsPerSecond())
 	}

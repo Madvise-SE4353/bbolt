@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch BBolt Benchmark",
+            "type": "go",
+            "request": "launch",
+            "mode": "exec",
+            "program": "${workspaceFolder}/bin/bbolt",
+            "args": ["bench", "-count", "1000000", "-cpuprofile", "cpu.prof", "-blockprofile", "block.prof", "-memprofile", "mem.prof"],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
